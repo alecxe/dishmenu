@@ -46,8 +46,12 @@ def generateMostNourishing(dishesList):
     for dishGroupDict in dishesList:
         for k,v in dishGroupDict.items():
             def getWeight(s):
-                return s[1]
-            result.append(sorted(v, reverse=True, key=getWeight)[0])
+                return int(s[1])
+            listNext = sorted(v, reverse=True, key=getWeight)
+            for tup in listNext:
+                print tup[1]
+            print listNext
+            result.append(listNext[0])
     return result
 
 def printDishes(dishesList):
