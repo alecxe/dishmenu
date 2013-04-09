@@ -8,6 +8,7 @@ secondDishesName = ur'Вторые блюда'
 garnirDishesName = ur'Гарнир'
 drinksName = ur'Напитки'
 bakingsName = ur'Мучные изделия'
+dir = 'Меню Приятного аппетита для сотрудников.xlsx'
 
 def convertType(val):
     return str(val) if type(val) == int or type(val) == float else val
@@ -55,7 +56,6 @@ def printDishes(dishesList):
             for dishTuple in v:
                 print k+' : '+convertType(dishTuple[0])+' : '+convertType(dishTuple[1])+ur' гр. : '+convertType(dishTuple[2])+ur' р.'
 
-dir = 'C:/Documents and Settings/705.OFFICE/Рабочий стол/Меню Приятного аппетита для сотрудников.xls'
 workbook = xlrd.open_workbook(dir,encoding_override="cp1251")
 worksheet = workbook.sheet_by_name('меню'.decode('cp1251'))
 num_rows = worksheet.nrows - 1
@@ -79,4 +79,4 @@ while curr_row < num_rows:
 dishesList = getDishes(dishes)
 #printDishes(dishesList)
 for dishTuple in generateMostNourishing(dishesList):
-    print convertType(dishTuple[1])
+    print convertType(dishTuple[0])+', '+convertType(dishTuple[1])+', '+convertType(dishTuple[2])
