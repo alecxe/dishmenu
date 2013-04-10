@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:/Python27/adressbook/.idea/adressbook.iml" filepath="C:/Python27/adressbook/.idea/adressbook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../adressbook/.idea/adressbook.iml" filepath="$PROJECT_DIR$/../adressbook/.idea/adressbook.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/dishesmenu.iml" filepath="$PROJECT_DIR$/.idea/dishesmenu.iml" />
     </modules>
   </component>
