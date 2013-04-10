@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../adressbook/.idea/adressbook.iml" filepath="$PROJECT_DIR$/../adressbook/.idea/adressbook.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/dishesmenu.iml" filepath="$PROJECT_DIR$/.idea/dishesmenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dishmenu.iml" filepath="$PROJECT_DIR$/.idea/dishmenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../djpypr/.idea/djpypr.iml" filepath="$PROJECT_DIR$/../djpypr/.idea/djpypr.iml" />
     </modules>
   </component>
 </project>
