@@ -45,14 +45,12 @@ def generateMostNourishing(dishesList):
     result = []
     for dishGroupDict in dishesList:
         for k,v in dishGroupDict.items():
+            print k
             def getWeight(s):
-                print s[1]
-                print type(s[1])
-                return int(s[1])
+                return s[1]
             listNext = sorted(v, reverse=True, key=getWeight)
             for tup in listNext:
-                print tup
-            #print listNext
+                print tup[1]
             result.append(listNext[0])
     return result
 
@@ -71,18 +69,23 @@ while curr_row < num_rows:
     qty = 0
     curr_row += 1
     dish = worksheet.cell_value(curr_row, 2)
-    qtyList = worksheet.cell_value(curr_row, 3).replace(ur'1 ¯Ú','50').strip().split('/')
-    if len(qtyList) == 1:
-        qty = qtyList[0]
-    elif len(qtyList) == 2:
-        qty = qtyList[1]
-    elif len(qtyList) > 2:
-        qtyList = map(int, qtyList)
-        qty = sum(qtyList)
-    price = worksheet.cell_value(curr_row, 4)
-    print qty + '<=='
-    if len(dish) > 0 and re.search('\S+', dish) and not re.search(ur'Ã≈Õﬁ', dish):
-        dishes.append((dish,int(qty),price))
+    if dish != '':
+        qtyList = worksheet.cell_value(curr_row, 3).replace(ur'1 ¯Ú','50').strip().split('/')
+        if len(qtyList) == 1:
+            qty = qtyList[0]
+        elif len(qtyList) == 2:
+            qty = qtyList[1]
+        elif len(qtyList) > 2:
+            qtyList = map(int, qtyList)
+            qty = sum(qtyList)
+        if type(qty) != int:
+            if len(qty) == 0:
+                qty = 0
+            elif re.match('\d+',qty):
+                qty = int(qty)
+        price = worksheet.cell_value(curr_row, 4)
+        if len(dish) > 0 and re.search('\S+', dish) and not re.search(ur'Ã≈Õﬁ', dish):
+            dishes.append((dish,qty,price))
 dishesList = getDishes(dishes)
 generateMostNourishing(dishesList)
 #printDishes(dishesList)
