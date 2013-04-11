@@ -4,12 +4,13 @@
     <title></title>
 </head>
 <body>
-<h1>Dish Types</h1>
+<h1>Меню</h1>
 
 <ul>
-    {% for dishType in object_list %}
-        <a href="{% url 'makemenu:detail' dishtype.id %}">{{ dishType }}</a>
+    {% for dishType in dishtypes_list %}
+        <a href="{% url 'makemenu:dishes' dishType.id %}">{{ dishType }}</a><br>
     {% endfor %}
 </ul>
+
 </body>
 </html>

@@ -9,5 +9,7 @@
     {% for dish in dishtype.dish_set.all %}
         <a>{{ dish.dish_name }}</a></br>
     {% endfor %}
+    <br>
+    <a href="{% url 'makemenu:dishtypes-list' %}">Меню</a>
 </body>
 </html>
