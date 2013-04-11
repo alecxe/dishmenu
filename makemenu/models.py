@@ -23,13 +23,5 @@ class Dish(models.Model):
         default=0,
     )
 
-    def __str__(self):
-
-        return ' '.join([
-            self.dish_name,
-            self.dish_weight,
-            self.dish_price
-            ])
-
     def __unicode__(self):
         return self.dish_name
