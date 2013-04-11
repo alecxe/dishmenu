@@ -4,6 +4,7 @@ import makemenu.views
 #from django.contrib import admin
 #admin.autodiscover()
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'dishmenu.views.home', name='home'),
@@ -14,6 +15,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     #url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', makemenu.views.ListContactView.as_view(),
-        name='dishtypes-list', ),
+    url(r'^makemenu/', include('makemenu.urls',namespace = "makemenu")),
 )

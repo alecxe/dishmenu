@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>{{ dishtype.name }}</h1>
+
+    {% for dish in dishtype.dish_set.all %}
+        <a>{{ dish.dish_name }}</a></br>
+    {% endfor %}
+</body>
+</html>

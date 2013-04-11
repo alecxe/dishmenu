@@ -8,7 +8,7 @@
 
 <ul>
     {% for dishType in object_list %}
-        <li>{{ dishType }}</li>
+        <a href="{% url 'makemenu:detail' dishtype.id %}">{{ dishType }}</a>
     {% endfor %}
 </ul>
 </body>
