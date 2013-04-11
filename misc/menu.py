@@ -1,6 +1,12 @@
 # -*- coding: cp1251 -*-
+from django.core.management import setup_environ
+from dishmenu import settings
+
+setup_environ(settings)
+
 import xlrd
 import re
+from makemenu.models import DishType, Dish
 
 coldDishesName = ur'Холодные блюда'
 firstDishesName = ur'Первые блюда'
@@ -8,7 +14,7 @@ secondDishesName = ur'Вторые блюда'
 garnirDishesName = ur'Гарнир'
 drinksName = ur'Напитки'
 bakingsName = ur'Мучные изделия'
-dir = 'Меню Приятного аппетита для сотрудников.xlsx'
+directory = 'C:\Python27\dishmenu\misc\Меню Приятного аппетита для сотрудников.xlsx'
 
 def convertType(val):
     return str(val) if type(val) == int or type(val) == float else val
@@ -60,7 +66,7 @@ def printDishes(dishesList):
             for dishTuple in v:
                 print k+' : '+convertType(dishTuple[0])+' : '+convertType(dishTuple[1])+ur' гр. : '+convertType(dishTuple[2])+ur' р.'
 
-workbook = xlrd.open_workbook(dir,encoding_override="cp1251")
+workbook = xlrd.open_workbook(directory,encoding_override="cp1251")
 worksheet = workbook.sheet_by_name('меню'.decode('cp1251'))
 num_rows = worksheet.nrows - 1
 curr_row = -1
@@ -87,7 +93,15 @@ while curr_row < num_rows:
         if len(dish) > 0 and re.search('\S+', dish) and not re.search(ur'МЕНЮ', dish):
             dishes.append((dish,qty,price))
 dishesList = getDishes(dishes)
-generateMostNourishing(dishesList)
+
+for dish_group_dict in dishesList:
+    for dish_group_name, dishes_list in dish_group_dict.items():
+        new_dish_type = DishType(name=dish_group_name)
+        new_dish_type.save()
+        for dish_tuple in dishes_list:
+            new_dish_type.dish_set.create(dish_name=dish_tuple[0],dish_weight=dish_tuple[1],dish_price=dish_tuple[2])
+        print new_dish_type.dish_set.count()
+#generateMostNourishing(dishesList)
 #printDishes(dishesList)
 #for dishTuple in generateMostNourishing(dishesList):
  #   print convertType(dishTuple[0])+', '+convertType(dishTuple[1])+', '+convertType(dishTuple[2])
