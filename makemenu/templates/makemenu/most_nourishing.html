@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Самый сытный обед</h1>
+
+    <ul>
+        {% for dishtype,dish in most_nourishing_dishes.items %}
+            <li>{{ dish.dish_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

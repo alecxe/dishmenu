@@ -9,4 +9,6 @@ urlpatterns = patterns('',
         name='dishtypes-list', ),
     url(r'^(?P<pk>\d+)/$',makemenu.views.DetailDishTypeView.as_view(),
         name='dishes', ),
+    url(r'^/most_nourishing/$', 'makemenu.views.most_nourishing', name='most_nourishing'),
+
     )
