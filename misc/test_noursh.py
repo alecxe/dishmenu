@@ -10,4 +10,6 @@ most_nourishing_dishes = {}
 for next_dish_type in DishType.objects.all():
     most_nourishing_dishes[next_dish_type.name] = next_dish_type.dish_set.aggregate(Max('dish_weight'))
 
-print most_nourishing_dishes
+for k,v in  most_nourishing_dishes.items():
+    print v
+    #print k + ' : ' + str(v.dish_weight)
